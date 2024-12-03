@@ -67,51 +67,94 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Form handling
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    const submitButton = document.getElementById('submit-button');
+    const successMessage = document.getElementById('form-success');
+    const errorMessage = document.getElementById('form-error');
+    const inputs = form.querySelectorAll('input, textarea');
+
+    // Real-time validation
+    inputs.forEach(input => {
+        input.addEventListener('input', function() {
+            validateInput(input);
+            updateSubmitButton();
+        });
+
+        input.addEventListener('blur', function() {
+            validateInput(input);
+            updateSubmitButton();
+        });
+    });
+
+    function validateInput(input) {
+        const errorElement = document.getElementById(`${input.id}-error`);
+        
+        if (input.validity.valid) {
+            errorElement.textContent = '';
+            input.classList.remove('invalid');
+            input.classList.add('valid');
+        } else {
+            errorElement.textContent = input.title;
+            input.classList.remove('valid');
+            input.classList.add('invalid');
+        }
+    }
+
+    function updateSubmitButton() {
+        submitButton.disabled = !form.checkValidity();
+    }
+
+    // Form submission
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData.entries());
-        
-        // Basic form validation
-        let isValid = true;
-        const required = ['name', 'email', 'message'];
-        
-        required.forEach(field => {
-            if (!data[field]) {
-                isValid = false;
-                const input = contactForm.querySelector(`[name="${field}"]`);
-                input.classList.add('error');
+        if (!form.checkValidity()) {
+            return;
+        }
+
+        // Show loading state
+        submitButton.classList.add('loading');
+        submitButton.disabled = true;
+
+        // Submit form using Formspree
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
             }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                // Show success message
+                form.reset();
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+
+                // Reset form after 5 seconds
+                setTimeout(() => {
+                    form.style.display = 'block';
+                    successMessage.style.display = 'none';
+                }, 5000);
+            } else {
+                throw new Error('Form submission failed');
+            }
+        })
+        .catch(error => {
+            // Show error message
+            errorMessage.style.display = 'block';
+            successMessage.style.display = 'none';
+        })
+        .finally(() => {
+            // Remove loading state
+            submitButton.classList.remove('loading');
+            submitButton.disabled = false;
         });
-        
-        if (!isValid) {
-            alert('Please fill in all required fields');
-            return;
-        }
-        
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(data.email)) {
-            alert('Please enter a valid email address');
-            return;
-        }
-        
-        // Here you would typically send the form data to your backend
-        try {
-            // Simulate form submission
-            console.log('Form submitted:', data);
-            alert('Thank you for your message! We will get back to you soon.');
-            contactForm.reset();
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            alert('There was an error submitting the form. Please try again later.');
-        }
     });
-}
+});
 
 // Scroll-based header
 let lastScroll = 0;
