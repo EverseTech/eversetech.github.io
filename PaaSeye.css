@@ -1,0 +1,100 @@
+/* From Uiverse.io by Cybercom682 - Modified for EverseTech */ 
+.loader {
+  height: 180px;
+  width: 180px;
+  position: relative;
+  border: 2px solid #0066cc;
+}
+
+.loader::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  border: 1px solid #0066cc;
+  position: absolute;
+  animation: doitreverse 4s infinite;
+}
+
+.loader::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  border: 1px solid #0066cc;
+  position: absolute;
+  animation: doit 4s infinite;
+}
+
+@keyframes doit {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25) rotate(45deg);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes doitreverse {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.eye {
+  height: 50%;
+  width: 50%;
+  border: 1px solid #0066cc;
+  background-color: rgba(0, 102, 204, 0.8);
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  animation: showme 4s infinite;
+}
+
+.eye::before {
+  content: "";
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  animation: showme 4s infinite;
+}
+
+.eye::after {
+  content: "";
+  height: 10px;
+  width: 10px;
+  background-color: white;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  animation: showme 4s infinite;
+}
+
+@keyframes showme {
+  0% {
+    transform: scale(0.3);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.3);
+  }
+}

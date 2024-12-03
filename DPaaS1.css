@@ -1,0 +1,68 @@
+/* From Uiverse.io by mrhyddenn - Modified for EverseTech */ 
+.loader {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  background: transparent;
+  box-shadow: 25px 25px 75px rgba(0,102,204,0.2);
+  border: 2px solid #0066cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.loader::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  background: transparent;
+  border: 1px dashed #0066cc;
+  box-shadow: inset -5px -5px 25px rgba(0,102,204,0.1),
+  inset 5px 5px 35px rgba(0,102,204,0.1);
+}
+
+.loader::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 1px dashed #0066cc;
+  box-shadow: inset -5px -5px 25px rgba(0,102,204,0.1),
+  inset 5px 5px 35px rgba(0,102,204,0.1);
+}
+
+.loader span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 50%;
+  background: transparent;
+  transform-origin: top left;
+  animation: radar81 1.5s linear infinite;
+  border-top: 2px dashed #00aa55;
+}
+
+.loader span::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00aa55;
+  transform-origin: top left;
+  transform: rotate(-55deg);
+  filter: blur(30px) drop-shadow(20px 20px 20px rgba(0,170,85,0.5));
+}
+
+@keyframes radar81 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
