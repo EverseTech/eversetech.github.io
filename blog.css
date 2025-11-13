@@ -1,0 +1,78 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #ffffff;
+  color: #222;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.blog-header {
+  text-align: center;
+  padding: 6rem 1rem 2rem;
+  background-color: #f5f7fa;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.blog-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: #0d0d0d;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.blog-container {
+  max-width: 850px;
+  margin: 2.5rem auto;
+  padding: 0 1.2rem;
+}
+
+.blog-hero {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.blog-content h2 {
+  margin-top: 2rem;
+  color: #0077cc;
+  font-size: 1.3rem;
+}
+
+.blog-content p {
+  margin-bottom: 1rem;
+}
+
+blockquote {
+  border-left: 4px solid #0077cc;
+  padding-left: 1rem;
+  font-style: italic;
+  color: #444;
+  margin: 1.5rem 0;
+}
+
+.inline-img {
+  width: 100%;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  height: 550px;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
