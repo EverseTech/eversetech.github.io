@@ -1,3 +1,4 @@
+/* Post 1 and Post 2 styling */
 body {
   font-family: "Poppins", sans-serif;
   background: #ffffff;
@@ -86,4 +87,117 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+
+/* Main Blog Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fff;
+  margin: 0;
+  color: #222;
+}
+
+/* Grid container */
+.blog-grid {
+  width: 90%;
+  max-width: 1100px;
+  margin: 3rem auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* this gives two columns */
+  gap: 2rem 2.5rem;
+}
+
+/* Blog cards */
+.blog-item {
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: left;
+  border: 1px solid #e5e7eb;
+}
+
+/* Image */
+.blog-thumb {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Titles */
+.blog-item h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.3rem;
+  color: #111;
+}
+
+/* Paragraph */
+.blog-item p {
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Read More button */
+.read-more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: #0077cc;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.read-more:hover {
+  background: #005fa3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-thumb {
+    height: 260px;
+  }
+}
+
+/* Blog navigation buttons styling */
+.blog-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.nav-btn {
+  padding: 0.7rem 1.4rem;
+  background: #0077cc;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: #005fa3;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .blog-nav {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .nav-btn {
+    width: 100%;
+  }
 }
